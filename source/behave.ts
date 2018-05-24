@@ -1,3 +1,5 @@
+import toTitleCase = require("title-case");
+
 /// <reference path="globals.d.ts" />
 
 ['Given', 'When', 'And', 'UnitUnderTest'].forEach(declareLanguageBlock);
@@ -33,8 +35,10 @@ global.xThen = function (sentence: string, func: (this: ITestCallbackContext, do
 
 function declareLanguageBlock(name) {
     function getDescription(sentence: string) {
-        console.log(this);
-        return `${name} ${sentence}`;
+        if(name === 'UnitUnderTest')
+            return `${toTitleCase(name)}: ${sentence}`;
+        else
+            return `${toTitleCase(name)} ${sentence}`;
     }
 
     global[name] = Object.assign(function (sentence: string, func: (this: ISuiteCallbackContext) => void) {
