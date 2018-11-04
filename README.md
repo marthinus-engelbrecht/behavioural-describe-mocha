@@ -2,7 +2,7 @@
 
 Convenience functions for allowing clearer use of given, when, the bdd language when using [Mocha](https://mochajs.org/).
 
-##Usage 
+## Usage 
 
 ```typescript
 Given('I have some pre-configured condition', function(){
